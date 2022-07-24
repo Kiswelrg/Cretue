@@ -1,6 +1,6 @@
 # Retspan
-Third party tool for Academic Affairs Management System of ouc (ocean university of china) before 2020.
-Basically, this is a Django project. 
+Third party tool for Academic Affairs Management System of OUC (Ocean University of China) before 2020.
+Basically, this is a Django project.
 
 ## how to run
 python manage.py runserver
