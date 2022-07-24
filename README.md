@@ -2,6 +2,9 @@
 Third party tool for Academic Affairs Management System of ouc (ocean university of china) before 2020.
 Basically, this is a Django project. 
 
+## how to run
+python manage.py runserver
+
 ## Functionality
 search for selected courses by semester (of anyone with a student id which is 学号), including details about how many coins he/she has committed to it.
 
