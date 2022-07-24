@@ -4,7 +4,9 @@ Basically, this is a Django project.
 
 ## Functionality
 search for selected courses by semester (of anyone with a student id which is 学号), including details about how many coins he/she has committed to it.
+
 search for grades by semester or from the beginning of your uni (of anyone also).
+
 serach for students by its student id or name, by name you'll get multiple results. This part is realized by scraping through jwgl.ouc.edu.cn's database using a BFS algorithm included in the project, which unfornately I've lost the database backup.
 
 feel free to work on this project to bring it back to life again!
