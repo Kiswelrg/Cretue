@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" style="background-color: #fafafa"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <script defer="" src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+  <script type="text/javascript" src="/static/jquery.js"></script>
+  <title>Cretue signin</title>
+  <link rel="stylesheet" type="text/css" href="/static/green.css">
+  <link rel="stylesheet" type="text/css" href="/static/logincustom.css">
+  <link rel="stylesheet" type="text/css" href="/static/fix.css">
+  <style type="text/css">
+
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar is-fixed-top" id="menubar">
+  <div class="menu" id="menu">
+    <div class="ac-gn-search-placeholder-container" role="search">
+      <div class="ac-gn-search ac-gn-search-small">
+        <!-- a-->
+        <a id="ac-gn-link-search-small" class="ac-gn-link" data-analytics-title="search" data-analytics-click="search" data-analytics-intrapage-link="" aria-label="Search apple.com" role="button" aria-haspopup="true">
+          <div class="ac-gn-search-placeholder-bar">
+            <div class="ac-gn-search-placeholder-input">
+              <div class="ac-gn-search-placeholder-input-text" aria-hidden="true">
+                <div class="ac-gn-link-search ac-gn-search-placeholder-input-icon"></div>
+                <span class="ac-gn-search-placeholder">Search cretue.com</span>
+              </div>
+            </div>
+            <div class="ac-gn-searchview-close ac-gn-searchview-close-small ac-gn-search-placeholder-searchview-close">
+              <span class="ac-gn-searchview-close-cancel" aria-hidden="true">Cancel</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <ul class="ac-gn-list">
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-login">
+        <a class="ac-gn-link-login" href="/signin">
+          <span class="ac-gn-link-text">Login</span>
+        </a>
+      </li>
+
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-help">
+        <a class="ac-gn-link-help" href="/help" data-analytics-title="help">
+          <span class="ac-gn-link-text">Help</span>
+        </a>
+      </li>
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-support">
+        <a class="ac-gn-link-support" href="/support" data-analytics-title="support">
+          <span class="ac-gn-link-text">Support</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  <div class="navbar-brand">
+
+    <div class="navbar-item sta">
+      <span class="tag is-warning is-small status" id="status"><i class="fab fa-angellist"></i>
+        <p> {{ request.session.username }}</p>
+      </span>
+    </div>
+
+    <div class="navbar-burger burger oftwo" id="ac-globalnav" data-target="navbarExampleTransparentExample" state="0">
+
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <!-- <a class="navbar-item" href="#">
+        O0o
+      </a> -->
+      <div class="navbar-item has-dropdown has-dropdown-up is-hoverable">
+        <a class="navbar-link" href="#">
+          Docs
+        </a>
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item" href="#">
+            Overview
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="#">
+            Help
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-end">
+
+    </div>
+  </div>
+</nav>
+
+<!-- <section class="hero is-light is-bold" style="background-image: linear-gradient(141deg,#009e6c 0,#00d1b2 71%,#00e7eb 100%);"> -->
+  <section class="hero is-light is-bold sup">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <!-- <img src="/static/logo.png" alt="Logo"> -->
+          </a>
+          <span class="navbar-burger burger ofee" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  Hello!
+                </a>
+                <div class="navbar-dropdown is-boxed" style="width: 250px">
+                  <div class="dropdown-item">
+                    <p>U can use both<strong style="color: #ffdd57"> User/P &amp;Cookie</strong> modes to login.</p>
+                  </div>
+                  
+                  <hr class="dropdown-divider">
+                  <div class="dropdown-item">
+                    <p>As I won't record <strong>any</strong> of your user/password combinations.</p>
+                  </div>
+                  <div class="dropdown-item">
+                    <p>But if you still worry, use cookie mode though.</p>
+                  </div>
+                  <hr class="dropdown-divider">
+                  <div class="dropdown-item">
+                    <p>In cookie mode, simply use a <strong>Valid jsession id</strong>, which u can find in your browser.</p>
+                  </div>
+                  <div class="dropdown-item">
+                    <p>For example, url in Chrome -&gt;<strong> chrome://settings/cookies/detail?site=jwgl.ouc.edu.cn</strong></p>
+                  </div>
+                </div>
+              </div>
+
+            <span class="navbar-item">
+              <a class="button is-primary is-inverted">
+                <span class="icon">
+                  <svg class="svg-inline--fa fa-closed-captioning fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="closed-captioning" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path></path></svg><!-- <i class="fas fa-closed-captioning"></i> -->
+                </span>
+                <span>Cretue</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title come-with-me">
+        
+      </h1>
+      <h2 class="subtitle">
+        
+      </h2>
+    </div>
+  </div>
+
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot" style="">
+    <div class="tabs is-right fixtab" style="display: none;">
+  <ul>
+    <li class="" id="pad" style="width: 100%">
+      <a>
+        <span class="icon is-small"><i class=""></i></span>
+        <span>&nbsp;</span>
+      </a>
+    </li>
+    <li class="is-active" id="l">
+      <a>
+        <span class="icon is-small"><svg class="svg-inline--fa fa-calendar-alt fa-w-14" aria-hidden="true" data-prefix="fas" data-icon="calendar-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor"></path></svg><!-- <i class="fas fa-calendar-alt"></i> --></span>
+        <span>Lessons</span>
+      </a>
+    </li>
+    <li class="" id="t">
+      <a>
+        <span class="icon is-small"><svg class="svg-inline--fa fa-file-alt fa-w-12" aria-hidden="true" data-prefix="fas" data-icon="file-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor"></path></svg><!-- <i class="fas fa-file-alt"></i> --></span>
+        <span>Transcript</span>
+      </a>
+    </li>
+  </ul>
+</div>
+  </div>
+  
+</section>
+
+<!--TEST LOGIN -->
+<!--TEST LOGIN -->
+<!--TEST LOGIN <hr>-->
+
+    <section class="panel secondary" style="
+">
+      <div class="feature-list cols-row columns">
+        <div class="col-12 col-m-4 feature-list-item column">
+          <div class="feature-list-item-inner loginitem">
+            <div class="loghead"></div>
+
+<div class="signform">
+<form method="POST" id="" action="/login" autocomplete="">
+            {% csrf_token %}
+
+<div class="field">
+  <label class="label">Username</label>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input idim" type="text" placeholder="student Id" value="" name="username" id="uinput">
+    <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fas fa-check"></i>
+    </span>
+  </div>
+  <p class="help is-success hide us">username available</p>
+</div>
+
+<div class="field">
+  <label class="label">Password</label><a class="button is-small is-fullwidth modechange" id="ckbt">use cookie</a>
+  <a class="button is-small is-fullwidth modechange hide" id="pwbt">use password</a>
+  <div class="control has-icons-left has-icons-right">
+    <input class="input" type="password" placeholder="" value="" name="password" id="pinput">
+    <span class="icon is-small is-left">
+      <i class="fas fa-key"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fas fa-check"></i>
+    </span>
+  </div>
+    <p class="help is-warning">{{mes}}</p>
+</div>
+
+<div class="field">
+  <label class="label">Verification Code</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="" name="nick" id="nickinput" autocomplete="off">
+      <div class="yzm" style="
+    position: absolute;right: 0;
+"><img src="/ems/code"></div>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label">Email</label>
+  <div class="control has-icons-left has-icons-right">
+    <input disabled class="input is-danger" type="email" placeholder="Email (not necessary now)" value="">
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+    <span class="icon is-small is-right">
+      <i class="fas fa-exclamation-triangle"></i>
+    </span>
+  </div>
+  <p class="help is-danger">This email is invalid</p>
+</div>
+<input id="setmode" name="mode" value="0" hidden="" />
+
+
+
+
+<div class="field">
+  <div class="control">
+    <label class="checkbox">
+      <input type="checkbox" checked>
+      I agree to the <a href="#">terms and conditions</a>
+    </label>
+  </div>
+</div>
+
+
+
+<div class="field is-grouped">
+  <div class="control abc">
+    <button class="button" type="submit">Log in</button>
+  </div>
+  <div class="control bc">
+    <button class="button" type="reset">Cancel</button>
+  </div>
+</div>
+              </form>
+          </div>
+
+        </div>
+        
+        
+      </div>
+      </div>
+    </section>
+
+    
+<!--//FOOTER -->
+<!--//FOOTER -->
+<!--//FOOTER -->
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>cretue</strong> by <a rel="noopener noreferrer"><i class="fas fa-closed-captioning"></i></a>.
+      The website content
+      is not licensed <a>CC BY-NC-SA 2.0</a>.
+    </p>
+    <p>Full Technical Support by <strong>Cretue ,cc</strong></p>
+  </div>
+</footer>
+
+
+<!--//NAVBAR -->
+<!--//NAVBAR -->
+<!--//NAVBAR -->
+
+<script src="/static/loginbuilt.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/globalbuilt.js" type="text/javascript" charset="utf-8"></script>
+</body></html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" style="background-color: #fafafa">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+    <script type="text/javascript" src="/static/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/green.css">
+    <link rel="stylesheet" type="text/css" href="/static/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/fix.css">
+    <style type="text/css">
+    </style>
+    <script>
+        var a = new Array(2);
+        a = ["-=51px","+=51px"];
+        var b = 40;    //block大小
+        var c = 150;
+        var board = new Array(16);
+        var blocks;
+        var blank_position = new Array(17);
+        blank_position = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
+        var b_actions;
+        var opt = 0;
+        var n_size,b_size;
+        var plain="";
+        var base64code="";
+
+        function reset(){
+          $(".block").css("left","0");
+          b = 40;
+          board = new Array(16);
+          blocks = null;
+          b_actions = null;
+          blank_position = new Array(17);
+          blank_position = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
+          n_size=0;
+          b_size=0;
+          plain='';
+          base64code='';
+          if(opt==0){
+            $(".is-blank").removeClass("is-blank");
+            $(".puzzle div div").attr("style","");
+            var i;
+            for(i=0; i<4; i++){
+              for(j=0; j<4; j++){
+                $(".puzzle div:nth-child(" + (i+1) + ") div:nth-child(" + (j+1) + ")").html(i*4+j+1);
+              }
+            }
+            $(".puzzle div:nth-child(4) div:nth-child(4)").html("");
+          }
+        }
+    </script>
+  </head>
+  <body>
+    <textarea name="clipboard" style="visibility: hidden;position: fixed;"></textarea>
+    <div class="nav-hold"></div>
+    <nav class="navbar is-fixed-top" id="menubar">
+  <div class="menu" id="menu">
+    <div class="ac-gn-search-placeholder-container" role="search">
+      <div class="ac-gn-search ac-gn-search-small">
+        <!-- a-->
+        <a id="ac-gn-link-search-small" class="ac-gn-link" data-analytics-title="search" data-analytics-click="search" data-analytics-intrapage-link="" aria-label="Search apple.com" role="button" aria-haspopup="true">
+          <div class="ac-gn-search-placeholder-bar">
+            <div class="ac-gn-search-placeholder-input">
+              <div class="ac-gn-search-placeholder-input-text" aria-hidden="true">
+                <div class="ac-gn-link-search ac-gn-search-placeholder-input-icon"></div>
+                <span class="ac-gn-search-placeholder">Search cretue.com</span>
+              </div>
+            </div>
+            <div class="ac-gn-searchview-close ac-gn-searchview-close-small ac-gn-search-placeholder-searchview-close">
+              <span class="ac-gn-searchview-close-cancel" aria-hidden="true">Cancel</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <ul class="ac-gn-list">
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-login">
+        <a class="ac-gn-link-login" href="/signin">
+          <span class="ac-gn-link-text">Login</span>
+        </a>
+      </li>
+      
+      
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-help">
+        <a class="ac-gn-link-help" href="/help" data-analytics-title="help">
+          <span class="ac-gn-link-text">Help</span>
+        </a>
+      </li>
+      
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-support">
+        <a class="ac-gn-link-support" href="/support" data-analytics-title="support">
+          <span class="ac-gn-link-text">Support</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="navbar-brand">
+    
+    <div class="navbar-item sta">
+      <span class="tag is-warning is-small status" id="status"><i class="fab fa-angellist"></i>
+        <p> {{ request.session.username }}</p>
+      </span>
+    </div>
+    
+    <div class="navbar-burger burger oftwo" id="ac-globalnav" data-target="navbarExampleTransparentExample" state="0">
+      
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <!-- <a class="navbar-item" href="#">
+        O0o
+      </a> -->
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="#">
+          Docs
+        </a>
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item" href="#">
+            Overview
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="#">
+            Help
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        
+        <form method="POST" id="loginForm" action="" autocomplete="off">
+          {% csrf_token %}
+          <div class="field has-addons" style="width:410px">
+            <div class="control">
+              <a class="button is-small is-warning" style="width:56.64px" id="mode" onclick="">User/P</a>
+            </div>
+            <div class="control has-icons-left" id="us">
+              <input class="input is-small" id="usinput" name="username" type="text" placeholder="username">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-male"></i>
+              </span>
+              
+            </div>
+            <div class="control has-icons-left" id="pw">
+              <input class="input is-small" name="password" id="pwinput" type="password" placeholder="password">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-key"></i>
+              </span>
+            </div>
+            <div class="control has-icons-left" id="ss" hidden="">
+              <input class="input is-small" name="ssid" id="ssinput" type="text" placeholder="valid sessionid">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-key"></i>
+              </span>
+            </div>
+            <div class="control" id="log" >
+              <input id="loginput" class="button is-success is-small" type="button" value="Login " onclick="dologin()" onmousedown="">
+            </div>
+            <div class="control" id="exit" hidden="">
+              <input id="outinput" class="button is-danger is-small" type="button" value="Lout" style="width:50px" onclick="">
+            </div>
+            <input id="setmode" name="mode" value="0" hidden="" />
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+    <!-- <section class="hero is-hovered is-bold" style="background-image: linear-gradient(141deg,#009e6c 0,#00d1b2 71%,#00e7eb 100%);"> -->
+<main class="main">
+<section class="homepage-section  collection-module" data-analytics-region="hero" data-module-template="heroes"
+         data-analytics-activitymap-region-id="hero">
+
+    <div class="hero spring-iphone-xr hero-spring-iphone-xr" data-unit-id="spring-iphone-xr"
+         data-analytics-section-engagement="name:hero-spring-iphone-xr">
+
+        <div class="unit-wrapper litany low">
+
+            <a href="/ret" target="_self" class="unit-link" tabindex="0">
+                <span class="visuallyhidden unit-link-vo">Retsoab introduction. </span>
+            </a>
+
+
+            <div class="unit-copy-wrapper">
+                <h4 class="headline bangers" aria-hidden="true">Animation of <div title="选择n puzzle" class="is-active">n-puzzle</div> and <div title="选择滑动积木块">block-move</div></h4>
+                <div class="control">
+  <input class="input" type="text" placeholder="输入pattern路径分享码" value="20 -10 -1 2 -5 2 1 2">
+  <a class="button copy">copy code</a>
+</div>
+
+
+                <div class="cta-links" aria-hidden="true">
+                    <a class="button is-warning commit">Move</a>
+                </div>
+            </div>
+
+
+            <div class="unit-image-wrapper">
+                <div class="ani-container">
+                    <div class="puzzle">
+                      <div class="columns is-mobile">
+                        <div class="column button is-hovered np-1" index="1">1</div>
+                        <div class="column button is-hovered np-2" index="2">2</div>
+                        <div class="column button is-hovered np-3" index="3">3</div>
+                        <div class="column button is-hovered np-4" index="4">4</div>
+                      </div>
+                      <div class="columns is-mobile">
+                        <div class="column button is-hovered np-5" index="5">5</div>
+                        <div class="column button is-hovered np-6" index="6">6</div>
+                        <div class="column button is-hovered np-7" index="7">7</div>
+                        <div class="column button is-hovered np-8" index="8">8</div>
+                      </div>                      
+                      <div class="columns is-mobile">
+                        <div class="column button is-hovered np-9" index="9">9</div>
+                        <div class="column button is-hovered np-10" index="10">10</div>
+                        <div class="column button is-hovered np-11" index="11">11</div>
+                        <div class="column button is-hovered np-12" index="12">12</div>
+                      </div>                      
+                      <div class="columns is-mobile">
+                        <div class="column button is-hovered np-13" index="13">13</div>
+                        <div class="column button is-hovered np-14" index="14">14</div>
+                        <div class="column button is-hovered np-15" index="15">15</div>
+                        <div class="column button is-hovered np-16" index="16"></div>
+                      </div>                      
+                    </div>
+                    <div class="block">
+                      <div class="columns is-mobile">
+                        <div class="column button is-hovered bl-1" index="1">1</div>
+                        <div class="column button is-hovered bl-2" index="2">2</div>
+                        <div class="column button is-hovered bl-3" index="3">3</div>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<section class="homepage-section  collection-module" data-analytics-region="promo" data-module-template="promos"
+         data-analytics-activitymap-region-id="promo">
+
+
+    <div class="promo thats-iphone promo-thats-iphone" data-unit-id="thats-iphone"
+         data-analytics-section-engagement="name:promo-thats-iphone">
+
+
+        <div class="unit-wrapper theme-dark">
+
+
+            <a href="" target="_self" class="unit-link" tabindex="0">
+                <span class="visuallyhidden unit-link-vo">Table up your curriculum!</span>
+            </a>
+
+
+            <div class="unit-copy-wrapper">
+                <h4 class="headline" aria-hidden="true">Here's curriculum</h4>
+
+
+                <div class="cta-links" aria-hidden="true">
+                    <a href="" class="more" aria-label="See all kinds of things iPhone can do">See the best way to show your school timetable</a>
+                </div>
+            </div>
+
+
+            <div class="unit-image-wrapper">
+                <figure class="unit-image unit-image-thats-iphone-100-things"></figure>
+                <video src="/static/video/coffee.mp4" muted autoplay="autoplay" loop="loop"></video>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="promo ipad-pro promo-ipad-pro" data-unit-id="ipad-pro"
+         data-analytics-section-engagement="name:promo-ipad-pro">
+
+
+        <div class="unit-wrapper">
+
+
+            <a href="/photo-flow" target="_self" class="unit-link" tabindex="0">
+                <span class="visuallyhidden unit-link-vo">iI. </span>
+            </a>
+
+
+            <div class="unit-copy-wrapper">
+                <h4 class="headline" aria-hidden="true">Photo Flow</h4>
+
+
+                <h5 class="subhead" aria-hidden="true">All new. All courses. All powerful.</h5>
+
+
+                <div class="cta-links" aria-hidden="true">
+                    <a href="/docs/photo-flow" class="more" aria-label="Learn more about iPad Pro">Learn more</a>
+                    <a href="/photo-flow" class="more" aria-label="Buy iPad Pro">Try</a>
+                </div>
+            </div>
+
+
+            <div class="unit-image-wrapper">
+                <figure class="unit-image unit-image-ipad-pro"></figure>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</section>
+<!--TEST LOGIN -->
+<!--TEST LOGIN <hr>-->
+
+</main>
+
+<!--//FOOTER -->
+<!--//FOOTER -->
+<!--//FOOTER -->
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>cretue</strong> by <a rel="noopener noreferrer"><i class="fas fa-closed-captioning"></i></a>.
+      The website content
+      is not licensed <a>CC BY-NC-SA 2.0</a>.
+    </p>
+    <p>Full Technical Support by <strong>Cretue ,cc</strong></p>
+  </div>
+</footer>
+<!--//NAVBAR -->
+<!--//NAVBAR -->
+<!--//NAVBAR -->
+
+<script src="/static/globalbuilt.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/request.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/ai-ani.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

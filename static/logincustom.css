@@ -1,0 +1,134 @@
+.label ,.input ,.control ,.button{
+	font-size: .8rem;
+}
+
+.field.is-grouped > .control:not(:last-child) {
+    margin-right: 0;
+}
+
+.abc {
+    left: calc(50% - 90px);
+}
+
+.bc {
+    left: calc(50% - 35px);
+}
+
+.loghead {
+	background: url(/static/img/logii.jpg);
+	height: 140px;
+	width: 325px;
+	background-position: 75% 58%;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.signform {
+	padding: 15px;
+	font-size: 1px;
+}
+
+.hide {
+	visibility: hidden;
+}
+
+.loginitem {
+	left: calc(50% - 162.5px);
+}
+
+.button.modechange {
+	width: 30%;
+	height: 17px;
+	position: absolute;
+	right: 15px;
+	top: 245px;
+	padding-bottom: 3.6px;
+}
+
+.panel {
+	font-size: 1rem;
+}
+
+.panel.secondary {
+    height: auto;
+    margin: 0 auto;
+    padding: 16px;
+    position: relative;
+    width: 80%;
+}
+
+@media screen and (max-width: 768px){
+	.panel.secondary {
+		margin: 20px auto;
+		width: 90% !important;
+	}
+}
+
+@media screen and (min-width: 1025px) {
+	.panel.secondary {
+		margin: 30px auto;
+	}
+}
+@media (max-width: 1024px) {
+	.panel.secondary {
+		width: 95%;
+	}
+}
+
+.columns {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    margin-top: -0.75rem;
+}
+
+.feature-list {
+    list-style-type: none;
+    margin-top: 0%;
+    padding: 0;
+    position: relative;
+    z-index: 10;
+}
+
+@media (min-width: 768px) {
+	.feature-list {
+		margin-top: 0%;
+	}
+}
+
+.columns:last-child {
+    margin-bottom: -0.75rem;
+}
+
+@media screen and (min-width: 769px) {
+	.columns:not(.is-desktop) {
+		display: flex;
+	}
+}
+
+.column {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75rem;
+}
+
+.feature-list-item {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 12px 8px;
+    position: relative;
+}
+
+.feature-list-item-inner {
+    background: #fff;
+    box-shadow: 0 5px 12px 0 rgba(0, 0, 0, .15);
+    position: relative;
+}
+.loginitem {
+    left: calc(50% - 162.5px);
+}
+.feature-list-item-inner {
+    border-radius: 10px;
+}

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" style="background-color: #fafafa"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <script defer="" src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+  <script type="text/javascript" src="/static/jquery.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/static/green.css">
+  <link rel="stylesheet" type="text/css" href="/static/logincustom.css">
+  <link rel="stylesheet" type="text/css" href="/static/crawl.css">
+  <link rel="stylesheet" type="text/css" href="/static/fix.css">
+  <style type="text/css">
+
+  </style>
+
+</head>
+<body>
+
+    <nav class="navbar is-fixed-top" id="menubar">
+  <div class="menu" id="menu">
+    <div class="ac-gn-search-placeholder-container" role="search">
+      <div class="ac-gn-search ac-gn-search-small">
+        <!-- a-->
+        <a id="ac-gn-link-search-small" class="ac-gn-link" data-analytics-title="search" data-analytics-click="search" data-analytics-intrapage-link="" aria-label="Search apple.com" role="button" aria-haspopup="true">
+          <div class="ac-gn-search-placeholder-bar">
+            <div class="ac-gn-search-placeholder-input">
+              <div class="ac-gn-search-placeholder-input-text" aria-hidden="true">
+                <div class="ac-gn-link-search ac-gn-search-placeholder-input-icon"></div>
+                <span class="ac-gn-search-placeholder">Search cretue.com</span>
+              </div>
+            </div>
+            <div class="ac-gn-searchview-close ac-gn-searchview-close-small ac-gn-search-placeholder-searchview-close">
+              <span class="ac-gn-searchview-close-cancel" aria-hidden="true">Cancel</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <ul class="ac-gn-list">
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-login">
+        <a class="ac-gn-link-login" href="/signin">
+          <span class="ac-gn-link-text">Login</span>
+        </a>
+      </li>
+
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-help">
+        <a class="ac-gn-link-help" href="/help" data-analytics-title="help">
+          <span class="ac-gn-link-text">Help</span>
+        </a>
+      </li>
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-support">
+        <a class="ac-gn-link-support" href="/support" data-analytics-title="support">
+          <span class="ac-gn-link-text">Support</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  <div class="navbar-brand">
+
+    <div class="navbar-item sta">
+      <span class="tag is-warning is-small status" id="status"><i class="fab fa-angellist"></i>
+        <p> {{ request.session.username }}</p>
+      </span>
+    </div>
+
+    <div class="navbar-burger burger oftwo" id="ac-globalnav" data-target="navbarExampleTransparentExample" state="0">
+
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <!-- <a class="navbar-item" href="#">
+        O0o
+      </a> -->
+      <div class="navbar-item has-dropdown has-dropdown-up is-hoverable">
+        <a class="navbar-link" href="#">
+          Docs
+        </a>
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item" href="#">
+            Overview
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="#">
+            Help
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+
+        <form method="POST" id="loginForm" action="" autocomplete="off">
+          {% csrf_token %}
+          <div class="field has-addons" style="width:410px">
+            <div class="control">
+              <a class="button is-small is-warning" style="width:56.64px" id="mode" onclick="">User/P</a>
+            </div>
+            <div class="control has-icons-left" id="us">
+              <input class="input is-small" id="usinput" name="username" type="text" placeholder="username">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-male"></i>
+              </span>
+
+            </div>
+            <div class="control has-icons-left" id="pw">
+              <input class="input is-small" name="password" id="pwinput" type="password" placeholder="password">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-key"></i>
+              </span>
+            </div>
+            <div class="control has-icons-left" id="ss" hidden="">
+              <input class="input is-small" name="ssid" id="ssinput" type="text" placeholder="valid sessionid">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-key"></i>
+              </span>
+            </div>
+            <div class="control" id="log" >
+              <input id="loginput" class="button is-success is-small" type="button" value="Login " onclick="dologin()" onmousedown="">
+            </div>
+            <div class="control" id="exit" hidden="">
+              <input id="outinput" class="button is-danger is-small" type="button" value="Lout" style="width:50px" onclick="">
+            </div>
+            <input id="setmode" name="mode" value="0" hidden="" />
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!--TEST LOGIN -->
+<!--TEST LOGIN -->
+<!--TEST LOGIN <hr>-->
+
+<section class="panel secondary" style="width: 100% !important;">
+  <div class="feature-list cols-row columns">
+    <div class="col-12 col-m-4 feature-list-item column">
+      <div class="feature-list-item-inner loginitem">
+      
+        <div class="loghead"></div>
+        <div class="signform">
+            <form method="POST" id="addrecord" action="/crawl/clt" autocomplete="">
+                        {% csrf_token %}
+
+            <div class="field">
+              <label class="label">ID</label>
+              <div class="control has-icons-left has-icons-right">
+                <input class="input idim" type="text" placeholder="student Id" value="" name="stuid" id="uinput">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-check"></i>
+                </span>
+              </div>
+              <p class="help is-success hide us">username available</p>
+            </div>
+
+            <div class="field">
+              <label class="label">NAME</label><a class="button is-small is-fullwidth modechange" id="ckbt">use cookie</a>
+              <a class="button is-small is-fullwidth modechange hide" id="pwbt">use password</a>
+              <div class="control has-icons-left has-icons-right">
+                <input class="input" type="text" placeholder="name str" value="" name="stunm" id="pinput">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-key"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-check"></i>
+                </span>
+              </div>
+              <p class="help is-warning">{{ mes }}</p>
+            </div>
+
+
+
+            <div class="field is-grouped">
+              <div class="control">
+                <a class="button" id="ar">Add Record</a>
+              </div>
+
+            </div>
+
+            </form>
+        </div>
+
+      </div>   
+    </div>
+    
+    <div class="col-12 col-m-4 feature-list-item column">
+      <div class="feature-list-item-inner loginitem">
+      
+        <div class="loghead"></div>
+        <div class="signform">
+            <form method="POST" id="ssingle" action="/crawl/sgl" autocomplete="">
+                        {% csrf_token %}
+
+            <div class="field">
+              <label class="label">ID</label>
+              <div class="control has-icons-left has-icons-right">
+                <input class="input idim" type="text" placeholder="student Id" value="18120014012" name="stuid" >
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-check"></i>
+                </span>
+              </div>
+              <p class="help is-success hide us">username available</p>
+            </div>
+
+            <div class="field">
+              
+            </div>
+
+
+
+            <div class="field is-grouped">
+              <div class="control">
+                <a class="button" id="sgl">See Single</a>
+              </div>
+
+            </div>
+
+            </form>
+        </div>
+
+      </div>   
+    </div>
+
+    <div class="col-12 col-m-4 feature-list-item column">
+      <div class="feature-list-item-inner loginitem">
+      
+        <div class="loghead"></div>
+        <div class="signform">
+            <form method="POST" id="listC" action="/crawl/lic" autocomplete="">
+                        {% csrf_token %}
+
+            <div class="field">
+              <label class="label">Course Num</label>
+              <div class="control has-icons-left has-icons-right">
+                <input class="input idim" type="text" placeholder="course Id" value="" name="stuid" >
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-check"></i>
+                </span>
+              </div>
+              <p class="help is-success hide us">username available</p>
+            </div>
+
+            <div class="field">
+
+            </div>
+
+
+
+            <div class="field is-grouped">
+              <div class="control">
+                <a class="button" id="lic">List Course</a>
+              </div>
+
+            </div>
+
+            </form>
+        </div>
+
+      </div>   
+    </div>
+
+
+  </div>
+</section>
+
+<div class="">
+  <div class="box" id="ouput">
+    
+
+  </div>
+  <div><a class="button is-large is-danger is-outlined gameon" style="margin: 100px auto 0 auto;width: 600px;display: block;">
+    The Game, Mrs.Hudson, is On !
+  </a></div>
+  <script type="text/javascript" charset="utf-8">
+  $('.gameon').on('click', function(event) {
+    if( !$(this).hasClass('is-loading')){
+      $(this).addClass('is-loading');
+      $.ajax({
+        method: 'POST',
+        url: '/crawl/gameon',
+        data: $("#listC").serialize(),
+        success: function( data ){
+          console.log('Game Done !');
+        }
+      });
+    }
+    else
+      $(this).removeClass('is-loading');
+
+  });
+  
+
+  </script>
+</div>
+<!--//FOOTER -->
+<!--//FOOTER -->
+<!--//FOOTER -->
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>cretue</strong> by <a target="_blank" rel="noopener noreferrer" href="http://hqsz.ouc.edu.cn/">OUC Logistics</a>.
+      The website content
+      is not licensed <a href="#">CC BY-NC-SA 2.0</a>.
+    </p>
+    <p>Full Technical Support by <strong>Cretue ,Inc</strong></p>
+  </div>
+</footer>
+
+
+<!--//NAVBAR -->
+<!--//NAVBAR -->
+<!--//NAVBAR -->
+
+<script src="/static/request.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/loginbuilt.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/globalbuilt.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/crawl.js" type="text/javascript" charset="utf-8">
+</script>
+</body></html>

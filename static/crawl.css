@@ -1,0 +1,26 @@
+#ouput {
+	margin: 0 auto;
+	min-height: 20px;
+	min-width: 200px;
+	max-width: 850px;
+	display: table;
+	background-color: #e8ebea;
+	box-shadow: inset 2px 5px 2px 0px rgba(10, 10, 10, 0.1), inset 0px 0px 0px 0px rgba(11, 49, 25, 0.1);
+
+}
+
+
+@media screen and (min-width: 1088px) {
+	#ouput {
+		width: 800px;
+	}
+
+
+}
+
+@media screen and (max-width: 1087px) {
+	#ouput {
+		width: 90%;
+	}
+
+}

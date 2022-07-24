@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" style="background-color: #fafafa">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>cretue</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+  <script type="text/javascript" src="/static/jquery.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/static/green.css">
+  <link rel="stylesheet" type="text/css" href="/static/fix.css">
+  <style type="text/css">
+
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar is-fixed-top" id="menubar">
+  <div class="menu" id="menu">
+    <div class="ac-gn-search-placeholder-container" role="search">
+      <div class="ac-gn-search ac-gn-search-small">
+        <!-- a-->
+        <a id="ac-gn-link-search-small" class="ac-gn-link" data-analytics-title="search" data-analytics-click="search" data-analytics-intrapage-link="" aria-label="Search apple.com" role="button" aria-haspopup="true">
+          <div class="ac-gn-search-placeholder-bar">
+            <div class="ac-gn-search-placeholder-input">
+              <div class="ac-gn-search-placeholder-input-text" aria-hidden="true">
+                <div class="ac-gn-link-search ac-gn-search-placeholder-input-icon"></div>
+                <span class="ac-gn-search-placeholder">Search cretue.com</span>
+              </div>
+            </div>
+            <div class="ac-gn-searchview-close ac-gn-searchview-close-small ac-gn-search-placeholder-searchview-close">
+              <span class="ac-gn-searchview-close-cancel" aria-hidden="true">Cancel</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <ul class="ac-gn-list">
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-login">
+        <a class="ac-gn-link-login" href="/signin">
+          <span class="ac-gn-link-text">Login</span>
+        </a>
+      </li>
+
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-help">
+        <a class="ac-gn-link-help" href="/help" data-analytics-title="help">
+          <span class="ac-gn-link-text">Help</span>
+        </a>
+      </li>
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-support">
+        <a class="ac-gn-link-support" href="/support" data-analytics-title="support">
+          <span class="ac-gn-link-text">Support</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  <div class="navbar-brand">
+
+    <div class="navbar-item sta">
+      <span class="tag is-warning is-small status" id="status"><i class="fab fa-angellist"></i>
+        <p> {{ request.session.username }}</p>
+      </span>
+    </div>
+
+    <div class="navbar-burger burger oftwo" id="ac-globalnav" data-target="navbarExampleTransparentExample" state="0">
+
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <!-- <a class="navbar-item" href="#">
+        O0o
+      </a> -->
+      <div class="navbar-item has-dropdown has-dropdown-up is-hoverable">
+        <a class="navbar-link" href="#">
+          Docs
+        </a>
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item" href="#">
+            Overview
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="#">
+            Help
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+
+        <form method="POST" id="loginForm" action="" autocomplete="off">
+          {% csrf_token %}
+          <div class="field has-addons" style="width:410px">
+            <div class="control">
+              <a class="button is-small is-warning" style="width:56.64px" id="mode" onclick="">User/P</a>
+            </div>
+            <div class="control has-icons-left" id="us">
+              <input class="input is-small" id="usinput" name="username" type="text" placeholder="username">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-male"></i>
+              </span>
+
+            </div>
+            <div class="control has-icons-left" id="pw">
+              <input class="input is-small" name="password" id="pwinput" type="password" placeholder="password">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-key"></i>
+              </span>
+            </div>
+            <div class="control has-icons-left" id="ss" hidden="">
+              <input class="input is-small" name="ssid" id="ssinput" type="text" placeholder="valid sessionid">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-key"></i>
+              </span>
+            </div>
+            <div class="control" id="log" >
+              <input id="loginput" class="button is-success is-small" type="button" value="Login " onclick="dologin()" onmousedown="">
+            </div>
+            <div class="control" id="exit" hidden="">
+              <input id="outinput" class="button is-danger is-small" type="button" value="Lout" style="width:50px" onclick="">
+            </div>
+            <input id="setmode" name="mode" value="0" hidden="" />
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- <section class="hero is-light is-bold" style="background-image: linear-gradient(141deg,#009e6c 0,#00d1b2 71%,#00e7eb 100%);"> -->
+  <section class="hero is-light is-bold sup" style="height: 150px;display: none;">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+
+        <div class="navbar-brand">
+          <a class="navbar-item" style="opacity: 0">
+            <img src="/static/logo.png" alt="Logo">
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  Hello!
+                </a>
+                <div class="navbar-dropdown is-boxed" style="width: 250px">
+                  <div class="dropdown-item">
+                    <p>U can use both<strong style="color: #ffdd57"> User/P &Cookie</strong> modes to login.</p>
+                  </div>
+                  
+                  <hr class="dropdown-divider">
+                  <div class="dropdown-item">
+                    <p>As I won't record <strong>any</strong> of your user/password combinations.</p>
+                  </div>
+                  <div class="dropdown-item">
+                    <p>But if you still worry, use cookie mode though.</p>
+                  </div>
+                  <hr class="dropdown-divider">
+                  <div class="dropdown-item">
+                    <p>In cookie mode, simply use a <strong>Valid jsession id</strong>, which u can find in your browser.</p>
+                  </div>
+                  <div class="dropdown-item">
+                    <p>For example, url in Chrome -><strong> chrome://settings/cookies/detail?site=jwgl.ouc.edu.cn</strong></p>
+                  </div>
+                </div>
+              </div>
+
+            <span class="navbar-item">
+              <a class="button is-primary is-inverted">
+                <span class="icon">
+                  <i class="fas fa-closed-captioning"></i>
+                </span>
+                <span>Cretue</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body" style="display: none">
+    <div class="container has-text-centered">
+      <h1 class="title come-with-me">
+
+      </h1>
+      <h2 class="subtitle">
+        
+      </h2>
+    </div>
+  </div>
+
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot" style="display: none">
+
+  </div>
+</section>
+
+<!--TEST LOGIN -->
+<!--TEST LOGIN -->
+<!--TEST LOGIN <hr>-->
+<div class="shbar-container">
+    <div class="shbar-content">
+
+        <div class="srch">
+            <form method="post" id="wowf" action="/ems/coins">
+
+    			<input type="hidden" value="2017-2" name="nq" id="nq">
+                <input type="hidden" value="sjxz3" name="sjxz" id="sjxz">
+                <input type="hidden" name="userCode" id="stu" value="">
+                <input type="hidden" name="sel" id="sel" value="0">
+
+                <div class="input-panel text">
+                    <div class="panel-head head-off">
+                        Search
+                    </div>
+                    <div class="panel-body">
+                        <input type="text" class="txt" id="srchid" value="">
+                        <div class="panel-button">
+                            <div class="bg"></div>
+
+                        </div>
+                    </div>
+                    <div class="tipline">
+                        <div class="line">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <div class="input-panel opts">
+                <div class="panel-head">
+                    by
+                </div>
+                <div class="panel-body">
+                    <input class="txt act" value="投币" readonly>
+                    <div class="panel-button">
+                        <div class="bg">️</div>
+
+                    </div>
+                </div>
+                <div class="tipline">
+                    <div class="line">
+                    </div>
+                    <div class="menu tooltip-inner act">
+                        <div value="/ems/coins" class="tip cs">投币表</div>
+                        <div value="/ems/transc" class="tip ts">成绩单</div>
+                        <div value="/ems/frd" class="tip frd">小伙伴</div>
+                        <div value="/ems/alstd" class="tip as">已选课</div>
+                        <div value="/ems/grades" class="tip gs">同班成绩</div>
+                    </div>
+                </div>
+            </div>
+            <div class="input-panel opts gp">
+                <div class="panel-head">
+                    by
+                </div>
+                <div class="panel-body">
+                    <input class="txt xq" value="学期" readonly>
+                    <div class="panel-button">
+                        <div class="bg"></div>
+
+                    </div>
+                </div>
+                <div class="tipline">
+                    <div class="line">
+                    </div>
+                    <div class="menu tooltip-inner xq">
+
+                        <div value="2019-1" class="tip">19 Autumn</div>
+                        <div value="2019-0" class="tip">19 Summer</div>
+                        <div value="2018-2" class="tip">19 Spring</div>
+                        <div value="2018-1" class="tip">18 Autumn</div>
+                        <div value="2018-0" class="tip">18 Summer</div>
+                        <div value="2017-2" class="tip">18 Spring</div>
+                        <div value="2017-1" class="tip">17 Autumn</div>
+                        <div value="2017-0" class="tip">17 Summer</div>
+                        <div value="2016-2" class="tip">17 Spring</div><div value="all" class="tip">All</div>
+                        <div value="2016-1" class="tip">16 Autumn</div>
+                        <div value="2016-0" class="tip">16 Summer</div>
+                        <div value="2015-2" class="tip">16 Spring</div>
+                        <div value="2015-1" class="tip">15 Autumn</div>
+                        <div value="2015-0" class="tip">15 Summer</div>
+                        <div value="2014-2" class="tip">15 Spring</div>
+                        <div value="2014-1" class="tip">14 Autumn</div>
+                        <div value="2014-0" class="tip">14 Summer</div>
+                        <div value="2013-2" class="tip">14 Spring</div>
+                        <div value="2013-1" class="tip">13 Autumn</div>
+                        <div value="2013-0" class="tip">13 Summer</div>
+                        <div value="2012-2" class="tip">13 Spring</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="input-panel opts gp op">
+                <div class="panel-head">
+                    by
+                </div>
+                <div class="panel-body">
+                    <input class="txt xx" value="学号" readonly>
+                    <div class="panel-button">
+                        <div class="bg"></div>
+
+                    </div>
+                </div>
+                <div class="tipline">
+                    <div class="line">
+                    </div>
+                    <div class="menu tooltip-inner sl">
+                        <div value="0" class="tip">学号</div>
+                        <div value="1" class="tip">姓名</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div>
+  <div class="srch-result">
+      <div class="result-can" style="font-size:12px;">
+          <div class="notification is-success">
+              <button class="delete"></button>
+              <h3 id="toc_0">how to search</h3>
+              <p>u can see four given functions above:</p>
+              <ul>
+                  <li><div class="tag is-light">coin list</code></li>
+                  <li><div class="tag is-light">transcript of student</code></li>
+                  <li><div class="tag is-light">friends</code></li>
+                  <li><div class="tag is-light">selected courses</code></li>
+                  <li><div class="tag is-light">transcript of course</code></li>
+              </ul>
+              <p>to search your transcript, choose a semester, as for the friends, choose searching by id or name. Default semesters have been set for other options. For more information, go to <a href="/help/retsearch">search help docs</a>.</p>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+
+<!--//FOOTER -->
+<!--//FOOTER -->
+<!--//FOOTER -->
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>cretue</strong> by <a rel="noopener noreferrer"><i class="fas fa-closed-captioning"></i></a>.
+      The website content
+      is not licensed <a>CC BY-NC-SA 2.0</a>.
+    </p>
+    <p>Full Technical Support by <strong>Cretue ,cc</strong></p>
+  </div>
+</footer>
+
+
+<!--//NAVBAR -->
+<!--//NAVBAR -->
+<!--//NAVBAR -->
+
+<link rel="stylesheet" type="text/css" href="/static/srchresult.css">
+<script src="/static/globalbuilt.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/request.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

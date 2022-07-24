@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" style="background-color: #fafafa">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>Cretue</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+    <script type="text/javascript" src="/static/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/green.css">
+    <link rel="stylesheet" type="text/css" href="/static/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/fix.css">
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <div class="nav-hold"></div>
+    <nav class="navbar is-fixed-top" id="menubar">
+  <div class="menu" id="menu">
+    <div class="ac-gn-search-placeholder-container" role="search">
+      <div class="ac-gn-search ac-gn-search-small">
+        <!-- a-->
+        <a id="ac-gn-link-search-small" class="ac-gn-link" data-analytics-title="search" data-analytics-click="search" data-analytics-intrapage-link="" aria-label="Search apple.com" role="button" aria-haspopup="true">
+          <div class="ac-gn-search-placeholder-bar">
+            <div class="ac-gn-search-placeholder-input">
+              <div class="ac-gn-search-placeholder-input-text" aria-hidden="true">
+                <div class="ac-gn-link-search ac-gn-search-placeholder-input-icon"></div>
+                <span class="ac-gn-search-placeholder">Search cretue.com</span>
+              </div>
+            </div>
+            <div class="ac-gn-searchview-close ac-gn-searchview-close-small ac-gn-search-placeholder-searchview-close">
+              <span class="ac-gn-searchview-close-cancel" aria-hidden="true">Cancel</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <ul class="ac-gn-list">
+
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-login">
+        <a class="ac-gn-link-login" href="/signin">
+          <span class="ac-gn-link-text">Login</span>
+        </a>
+      </li>
+      
+      
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-help">
+        <a class="ac-gn-link-help" href="/help" data-analytics-title="help">
+          <span class="ac-gn-link-text">Help</span>
+        </a>
+      </li>
+      
+      <li class="ac-gn-item ac-gn-item-menu ac-gn-support">
+        <a class="ac-gn-link-support" href="/support" data-analytics-title="support">
+          <span class="ac-gn-link-text">Support</span>
+        </a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="navbar-brand">
+    
+    <div class="navbar-item sta">
+      <span class="tag is-warning is-small status" id="status"><i class="fab fa-angellist"></i>
+        <p> {{ request.session.username }}</p>
+      </span>
+    </div>
+    
+    <div class="navbar-burger burger oftwo" id="ac-globalnav" data-target="navbarExampleTransparentExample" state="0">
+      
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <!-- <a class="navbar-item" href="#">
+        O0o
+      </a> -->
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="#">
+          Docs
+        </a>
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item" href="#">
+            Overview
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="#">
+            Help
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        
+        <form method="POST" id="loginForm" action="" autocomplete="off">
+          {% csrf_token %}
+          <div class="field has-addons" style="width:410px">
+            <div class="control">
+              <a class="button is-small is-warning" style="width:56.64px" id="mode" onclick="">User/P</a>
+            </div>
+            <div class="control has-icons-left" id="us">
+              <input class="input is-small" id="usinput" name="username" type="text" placeholder="username">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-male"></i>
+              </span>
+              
+            </div>
+            <div class="control has-icons-left" id="pw">
+              <input class="input is-small" name="password" id="pwinput" type="password" placeholder="password">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-key"></i>
+              </span>
+            </div>
+            <div class="control has-icons-left" id="ss" hidden="">
+              <input class="input is-small" name="ssid" id="ssinput" type="text" placeholder="valid sessionid">
+              <span class="icon is-small is-left" style="width:27px;height:27px">
+                <i class="fas fa-key"></i>
+              </span>
+            </div>
+            <div class="control" id="log" >
+              <input id="loginput" class="button is-success is-small" type="button" value="Login " onclick="dologin()" onmousedown="">
+            </div>
+            <div class="control" id="exit" hidden="">
+              <input id="outinput" class="button is-danger is-small" type="button" value="Lout" style="width:50px" onclick="">
+            </div>
+            <input id="setmode" name="mode" value="0" hidden="" />
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+    <!-- <section class="hero is-light is-bold" style="background-image: linear-gradient(141deg,#009e6c 0,#00d1b2 71%,#00e7eb 100%);"> -->
+<main class="main">
+<section class="homepage-section  collection-module" data-analytics-region="hero" data-module-template="heroes"
+         data-analytics-activitymap-region-id="hero">
+
+    <div class="hero spring-iphone-xr hero-spring-iphone-xr" data-unit-id="spring-iphone-xr"
+         data-analytics-section-engagement="name:hero-spring-iphone-xr">
+
+        <div class="unit-wrapper litany">
+
+            <a href="/ems/ret" target="_self" class="unit-link" tabindex="0">
+                <span class="visuallyhidden unit-link-vo">Retsoab introduction. </span>
+            </a>
+
+
+            <div class="unit-copy-wrapper">
+                <h4 class="headline bangers" aria-hidden="true">cretue</h4>
+                <!-- <h2 class="headline logo-image logo-image-dark-iphone-xr-logo-hero" aria-label="iPhone X R"
+                    aria-hidden="true"><span class="visuallyhidden">iPhone XR</span></h2> -->
+                <h3 class="subhead" aria-hidden="true">All-tools combined. Most powerful assistant ever in your phone. <br
+                        class="exclude-small">Fastest performance. <span class="nowrap">To help you stay much more productive than </span>others.
+                </h3>
+
+
+                <div class="cta-links" aria-hidden="true">
+                    <a href="/docs/ret" class="more" aria-label="X">Learn more</a>
+                    <a href="/ems/ret" class="more" aria-label="X">Try</a>
+                </div>
+            </div>
+
+
+            <div class="unit-image-wrapper">
+                <figure class="unit-image unit-image-spring-iphone-xr-iphone-xr"></figure>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<section class="homepage-section  collection-module" data-analytics-region="promo" data-module-template="promos"
+         data-analytics-activitymap-region-id="promo">
+
+
+    <div class="promo thats-iphone promo-thats-iphone" data-unit-id="thats-iphone"
+         data-analytics-section-engagement="name:promo-thats-iphone">
+
+
+        <div class="unit-wrapper theme-dark">
+
+
+            <a href="" target="_self" class="unit-link" tabindex="0">
+                <span class="visuallyhidden unit-link-vo">Table up your curriculum!</span>
+            </a>
+
+
+            <div class="unit-copy-wrapper">
+                <h4 class="headline" aria-hidden="true">Here's curriculum</h4>
+
+
+                <div class="cta-links" aria-hidden="true">
+                    <a href="" class="more" aria-label="See all kinds of things iPhone can do">See the best way to show your school timetable</a>
+                </div>
+            </div>
+
+
+            <div class="unit-image-wrapper">
+                <figure class="unit-image unit-image-thats-iphone-100-things"></figure>
+                <video src="/static/video/coffee.mp4" muted autoplay="autoplay" loop="loop"></video>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="promo ipad-pro promo-ipad-pro" data-unit-id="ipad-pro"
+         data-analytics-section-engagement="name:promo-ipad-pro">
+
+
+        <div class="unit-wrapper">
+
+
+            <a href="/photo-flow" target="_self" class="unit-link" tabindex="0">
+                <span class="visuallyhidden unit-link-vo">iI. </span>
+            </a>
+
+
+            <div class="unit-copy-wrapper">
+                <h4 class="headline" aria-hidden="true">Photo Flow</h4>
+
+
+                <h5 class="subhead" aria-hidden="true">All new. All courses. All powerful.</h5>
+
+
+                <div class="cta-links" aria-hidden="true">
+                    <a href="/docs/photo-flow" class="more" aria-label="Learn more about iPad Pro">Learn more</a>
+                    <a href="/photo-flow" class="more" aria-label="Buy iPad Pro">Try</a>
+                </div>
+            </div>
+
+
+            <div class="unit-image-wrapper">
+                <figure class="unit-image unit-image-ipad-pro"></figure>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</section>
+<!--TEST LOGIN -->
+<!--TEST LOGIN <hr>-->
+
+</main>
+
+<!--//FOOTER -->
+<!--//FOOTER -->
+<!--//FOOTER -->
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>cretue</strong> by <a rel="noopener noreferrer"><i class="fas fa-closed-captioning"></i></a>.
+      The website content
+      is not licensed <a>CC BY-NC-SA 2.0</a>.
+    </p>
+    <p>Full Technical Support by <strong>Cretue ,cc</strong></p>
+  </div>
+</footer>
+<!--//NAVBAR -->
+<!--//NAVBAR -->
+<!--//NAVBAR -->
+
+<script src="/static/globalbuilt.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/request.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
