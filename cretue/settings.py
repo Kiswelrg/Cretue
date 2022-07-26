@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!#^jat(c6*2xhkeuh$tbcza7@fw)p!vdw$ka(=4ol+b5o#i-7n'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # 
@@ -29,7 +29,7 @@ SESSION_COOKIE_AGE = 5000
 USE_TZ = False
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'cc.cretue.com', 'www.cretue.com', 'cretue.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['']
 
 
 # Application definition
@@ -85,9 +85,9 @@ DATABASES = {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cretue',
+        'NAME': '',
         'USER': 'root',
-        'PASSWORD': 'mxy980924',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306'
     }
