@@ -1,4 +1,4 @@
-# Retspan
+# Cretue
 Third party tool for Academic Affairs Management System of OUC (Ocean University of China) before 2020.
 Basically, this is a Django project. It's build using pure css framework Bulma so there's a lot redundant css codes.
 
