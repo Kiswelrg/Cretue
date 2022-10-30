@@ -12,9 +12,9 @@ search for grades by semester or from the beginning of your uni (of anyone also)
 
 search for a certain course to see the grade how everyone ended up with to get a better perspective of whether it is a High-Score course for you to dive in for your GPA. (using a course number and a semeseter).
 
-serach for students by its student id or name, by name you'll get multiple results. This part is implemented by scraping through jwgl.ouc.edu.cn's database using a BFS algorithm included in the project, which unfornately I've lost the database backup.
+serach for students by its student id or name, by name you'll get multiple results. This part is implemented by scraping through jwgl.ouc.edu.cn's database using a BFS algorithm included in the project, which unfortunately I've lost the database backup of it, and since the backend of the system has changed since 2020 there's no way around to fetch it again.
 
-feel free to work on this project to bring it back to life again!
+feel free to work on this project and bring it back to life again!
 
 
 ## differences between v2 & v3 : new login method (added verification code):
@@ -24,3 +24,7 @@ feel free to work on this project to bring it back to life again!
 4. user/template/log.html & ret.html || .
 5. user/isvalid.py || added def getCode(ss):.
 6. user/urls.py & views.py || added getVCode & getSS.
+
+## contact me
+916650903@qq.com
+kiswelrg@gmail.com
