@@ -18,7 +18,7 @@ feel free to work on this project and bring it back to life again!
 
 ### platform
 supports both mobile and pc. use Chrome for best experience.
-![alt text](/cretue-mobile.jpg?raw=true width=500)
+![alt text](/cretue-mobile.jpg?raw=true | width=500)
 
 ### differences between v2 & v3 : new login method (added verification code):
 1. retspan/middleware/sys.py || added /ems/code for new login method.
