@@ -6,13 +6,13 @@ Basically, this is a Django project. It's build using pure css framework Bulma s
 python manage.py runserver
 
 ### Functionality
-search for selected courses by semester (of anyone with a student id which is 学号), including details about how many coins he/she has committed to it.
+search for anyone's selected courses by semester (with a student id (学号)), including details about how many coins he/she has inserted.
 
-search for grades by semester or from the beginning of your uni (of anyone also).
+search for grades(成绩) by semester or from the beginning of your uni (or of anyone else).
 
-search for a certain course to see the grade how everyone ended up with to get a better perspective of whether it is a High-Score course for you to dive in for your GPA. (using a course number and a semeseter).
+search for a certain course to see the grade how everyone ended up with to get a better perspective of whether it is a High-Score course for you to dive in for better GPA or it's one u should avoid taking. (using a course number(选课号) and a semeseter id(学期号)).
 
-serach for students by its student id or name, by name you'll get multiple results. This part is implemented by scraping through jwgl.ouc.edu.cn's database using a BFS algorithm included in the project, which unfortunately I've lost the database backup of it, and since the backend of the system has changed since 2020 there's no way around to fetch it again.
+serach for students by its student id(学号) or name(姓名), by name you'll get multiple results. This part is implemented by scraping through jwgl.ouc.edu.cn's database using a BFS algorithm included in the project, which unfortunately I've lost the database backup of the result, and since the backend of the jwgl.ouc.edu.cn system has changed since 2020 there's no way around to fetch it again.
 
 feel free to work on this project and bring it back to life again!
 
